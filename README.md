@@ -1,5 +1,7 @@
 # PhoneViz: phone alignment visualiser
 
+![Screenshot of PhoneViz with annotations showing where to interact with the tool.](phoneviz_screenshot.png)
+
 PhoneViz is a phone alignment visualiser which facilitates a deeper analysis of the phone alignments typically used to compare a reference transcription and a concrete speaker pronunciation. PhoneViz provides an interactive environment where aligned phones are displayed in the IPA chart helping users to explore phonetic variation beyond symbol substitution, insertion and deletion. This repository contains the code and resources for the phone alignment visualiser: ASR, alignment computation and Phones Visualiser.
 
 ## Installation and setup
