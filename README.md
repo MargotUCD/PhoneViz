@@ -39,9 +39,9 @@ Example usage below and in the Python file ```example_use.py```.
 python example_use.py
 ```
 Then you can choose one of the three modes. Example configurations are:
-* Mode 0: EBVS_arctic_a0001.wav || Author of the danger trail, Philip Steels, etc.
-* Mode 1: demonstration_dataset_without_alignments.csv
-* Mode 2: demonstration_dataset_with_alignments.csv
+* Mode 0: ```EBVS_arctic_a0001.wav``` || ```Author of the danger trail, Philip Steels, etc.```
+* Mode 1: ```demonstration_dataset_without_alignments.csv```
+* Mode 2: ```demonstration_dataset_with_alignments.csv```
 
 **1. Example use for one audio (mode 0)**
 The path to the audio file should be relative to the ```data\\utterances``` folder.
