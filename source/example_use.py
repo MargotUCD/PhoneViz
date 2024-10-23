@@ -1,11 +1,10 @@
-from phonemes_sequence import *
-from text import Text
-from automatic_speech_recognition import *
-from metric import *
-from show_and_tell_pipeline import *
-from phoneviz import *
+# -*- coding: utf-8 -*-
+
+from show_and_tell_pipeline import ShowTellPipeline
+from phoneviz import PhoneViz
 import os
 import pandas as pd
+import sys
 
 project_path = (os.path.dirname(os.path.abspath("__file__"))).replace("source", "")
 
@@ -40,3 +39,5 @@ while run:
     
     else:
         print("Unknown mode.")
+        
+sys.exit()
