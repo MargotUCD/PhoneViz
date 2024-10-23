@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-Code of the variation testing tool. That tool aims to test the robustness of 
-ASR systems to accented speech.
-"""
 
 from __future__ import print_function
 import torch
 import soundfile
-#import json
 import traceback
 from pydub import AudioSegment as am
 
 from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC, Wav2Vec2PhonemeCTCTokenizer
 from transformers import logging
 from phonemizer.backend.espeak.wrapper import EspeakWrapper
-
-#import azure.cognitiveservices.speech as speechsdk
 
 class AutomaticSpeechRecognition:
     def __init__(self, name = ""):
@@ -68,7 +61,6 @@ class Wav2Vec2ASR(AutomaticSpeechRecognition):
     """
     Methods
     """
-    
     def recognize_text(self,input_path):
         
         text_transcription, phoneme_transcription = "",""
