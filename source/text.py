@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Code of the variation testing tool. That tool aims to test the robustness of 
-ASR systems to accented speech.
-"""
 
 from __future__ import print_function
 import nltk
@@ -10,6 +6,9 @@ import string
 import eng_to_ipa
 
 class Text :
+    """
+    To help convert text to IPA / arpabet.
+    """
     def __init__(self, text_string = ""):
         self.__textString = text_string
     
@@ -27,7 +26,6 @@ class Text :
     
     def set_text_from_list(self,text_list):
         self.__textString = " ".join([str(item) for item in text_list])
-        #str(text_list).strip("[]").replace("'","").replace(",","")
         
     """
     Copy
