@@ -6,11 +6,15 @@ PhoneViz is a phone alignment visualiser which facilitates a deeper analysis of 
 
 The most recent version of this code can be cloned from this repository using the command:
 
-```git clone https://github.com/MargotUCD/PhoneViz.git```
+```bash
+git clone https://github.com/MargotUCD/PhoneViz.git
+```
 
 Install all the required packages to run the code using this command:
 
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 
 Once the repository has been cloned, you'll find the source code in `source`. The resources needed to compute the alignments and run the visualiser can be found in `resources`. 
 
