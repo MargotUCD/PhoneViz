@@ -43,6 +43,8 @@ Then you can choose one of the three modes. Example configurations are:
 * Mode 1: ```demonstration_dataset_without_alignments.csv```
 * Mode 2: ```demonstration_dataset_with_alignments.csv```
 
+![GIF showing the run of PhoneViz from the demo run file.](example_run.gif)
+
 **1. Example use for one audio (mode 0)**
 The path to the audio file should be relative to the ```data\\utterances``` folder.
 ```python
