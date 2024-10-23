@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Interspeech Show and Tell 2024 pipeline to generate alignments to be visualised by alignment visualiser.
-"""
 
 from automatic_speech_recognition import Wav2Vec2ASR
 from text import Text
@@ -11,6 +8,9 @@ import pandas as pd
 from os import path as ospath
 
 class ShowTellPipeline:
+    """
+    Show and Tell demo setup pipeline: (audios -> ASR ->) alignments -> PhoneViz.
+    """
     
     def __init__(self):
         with alive_bar(length = 3, title='Configuration') as bar:
@@ -21,9 +21,9 @@ class ShowTellPipeline:
             bar()
             self.__insertionSign = "i@"
     
-    def single_pipeline (self, file_path:str, text_ref:str) -> (list, list):
+    def single_pipeline (self, file_path:str, text_ref:str):
         """
-        Show and Tell pipeline on one audio: audio -> ASR -> alignments. Returns the alignments as lists.
+        Show and Tell pipeline on one audio: audio -> ASR -> alignments. Returns the alignments as columns in the dataframe.
 
         Parameters
         ----------
