@@ -90,7 +90,7 @@ To get the full alignments and display it in PhoneViz:
 ## Acknowledgements
 This work was conducted with the financial support of the Science Foundation Ireland (SFI) Centre for Research Training in Digitally-Enhanced Reality (d-real) under Grant No. 18/CRT/6224 and the ADAPT SFI Research Centre under Grant Agreement No. 13/RC/2106 P2 at University College Dublin.
 
-All the example audio files come from L2Arctiv [^1].
+All the example audio files come from L2Arctic [^1].
 
 [^1]:Zhao, G., Sonsaat, S., Silpachai, A., Lucic, I., Chukharev-Hudilainen, E., Levis, J., Gutierrez-Osuna, R. (2018) L2-ARCTIC: A Non-native English Speech Corpus. Proc. Interspeech 2018, 2783-2787, (https://doi.org/10.21437/Interspeech.2018-1110)
 
