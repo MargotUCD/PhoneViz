@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Code of the variation testing tool. That tool aims to test the robustness of 
-ASR systems to accented speech.
-"""
 
 from __future__ import print_function
 import os
-import jiwer
 import platform
 import subprocess
 import string
-import numpy as np
 import pandas as pd
-from sklearn.metrics import confusion_matrix
-from sklearn import preprocessing
     
 class SCLiteAlignment:
     def __init__(self):
@@ -44,9 +36,6 @@ class SCLiteAlignment:
         except:
             # does not stop if time out
             pass
-        #ret = subprocess.run(command, capture_output=True)
-        #if ret.returncode != 0 :
-        #    print("Command ended with the following error : \n\n",ret.stderr.decode())
         
         eval_report = {"I":{},"S":{},"D":{}, "":["",""]}
         
