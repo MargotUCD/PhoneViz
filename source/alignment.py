@@ -22,10 +22,10 @@ class SCLiteAlignment:
 
         h_r_files_path = os.path.join(self.__SCLITE_PATH, "bin")
         if not os.path.exists(os.path.join(h_r_files_path, "reffile")):
-            open(os.path.join(h_r_files_path, "reffile", 'x')).close()
+            open(os.path.join(h_r_files_path, "reffile"), 'x').close()
 
         if not os.path.exists(os.path.join(h_r_files_path, "hypfile")):
-            open(os.path.join(h_r_files_path, "hypfile", 'x')).close()
+            open(os.path.join(h_r_files_path, "hypfile"), 'x').close()
 
     def copy(self):
         return SCLiteAlignment()
