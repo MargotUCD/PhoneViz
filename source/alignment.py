@@ -114,9 +114,13 @@ class SCLiteAlignment:
     from subprocess import STDOUT, check_output
 
     def __call_cmd(self, cmd):
+        if "Windows" in platform.system():
+            shell_ = False
+        else:
+            shell_ = True
         try:
             subprocess.check_output(cmd, stdin=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                    timeout=10, cwd=self.__SCLITE_BIN_PATH)
+                                    shell=shell_, timeout=10, cwd=self.__SCLITE_BIN_PATH)
         except subprocess.CalledProcessError as e:
             print("Command ended with the following error : \n\n", e)
 

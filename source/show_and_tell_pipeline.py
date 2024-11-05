@@ -15,7 +15,6 @@ class ShowTellPipeline:
     
     def __init__(self):
         with alive_bar(length = 3, title='Configuration') as bar:
-            # self.__dataPath = (ospath.dirname(ospath.abspath("__file__"))).replace("source", "data")+"\\utterances\\"
             self.__dataPath = os.path.join(os.getcwd().replace("source", "data"), "utterances")
             self.__asrObj = Wav2Vec2ASR()
             bar()
