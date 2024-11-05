@@ -19,8 +19,9 @@ while run:
     mode = input("Type 0 to run single text mode, 1 to run dataframe mode or 2 for dataframe mode with alignments ready. EXIT to exit.")
     
     if mode == "0":
-        input_audio_path = input("Enter the name of the audio file : ")
-        input_text_ref = input ("Enter reference text : ")
+        # input_audio_path = input("Enter the name of the audio file : ")
+        # input_text_ref = input ("Enter reference text : ")
+        input_audio_path, input_text_ref = ["EBVS_arctic_a0001.wav", "Author of the danger trail, Philip Steels, etc."]
         PhoneViz().phoneviz(pipeline_obj.single_pipeline(input_audio_path,input_text_ref))
         
     elif mode == "1":
