@@ -5,7 +5,8 @@ from text import Text
 from alignment import SCLiteAlignment
 from alive_progress import alive_bar
 import pandas as pd
-from os import path as ospath
+import os
+# from os import path as ospath
 
 class ShowTellPipeline:
     """
@@ -14,7 +15,7 @@ class ShowTellPipeline:
     
     def __init__(self):
         with alive_bar(length = 3, title='Configuration') as bar:
-            self.__dataPath = (ospath.dirname(ospath.abspath("__file__"))).replace("source", "data")+"\\utterances\\"
+            self.__dataPath = os.path.join(os.getcwd().replace("source", "data"), "utterances")
             self.__asrObj = Wav2Vec2ASR()
             bar()
             self.__alignObj = SCLiteAlignment()
@@ -44,7 +45,7 @@ class ShowTellPipeline:
             pho_ref_str = " ".join(pho_ref)
             bar()
             # Step 2: run ASR and get hypothesis text and phonemes
-            text_hyp, pho_hyp = self.__asrObj.recognize_text(self.__dataPath + file_path)
+            text_hyp, pho_hyp = self.__asrObj.recognize_text(os.path.join(self.__dataPath, file_path))
             pho_hyp_str = " ".join(pho_hyp)
             bar()
             # Step 3: compute alignment and get aligned reference phonemes and aligned hypothesis phonemes

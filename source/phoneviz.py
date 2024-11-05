@@ -8,12 +8,13 @@ from matplotlib.widgets import Slider, Button
 from collections import Counter
 import matplotlib as mpl
 from pygame import mixer
+import platform
 
 
 class PhoneViz:
 
     def __init__(self):
-        self.project_path = os.path.dirname(os.path.abspath("__file__")).replace("source", "")
+        self.project_path = os.getcwd().replace("source", "")
         self.index_ = 0
         self.phone_count = 0
 
@@ -21,7 +22,7 @@ class PhoneViz:
         # phone index in the transcription
 
         # phonetic feature mapping with IPA annotations
-        mapping = pd.read_csv(self.project_path+"resources\\phonemapsat_ipa.csv")
+        mapping = pd.read_csv(os.path.join(self.project_path, "resources", "phonemapsat_ipa.csv"))
 
         # load the alignment file
         if isinstance(alignments_file, pd.DataFrame):
@@ -40,7 +41,7 @@ class PhoneViz:
 
             label = phone_buttons[btn_id_].label.get_text()
             mixer.init()
-            mixer.music.load(self.project_path + f'resources\\sounds\\{label}.mp3')
+            mixer.music.load(os.path.join(self.project_path, "resources", "sounds", f"{label}.mp3"))
             mixer.music.play()
             fig.canvas.draw_idle()
 
@@ -57,7 +58,7 @@ class PhoneViz:
                 print(speaker, file)
 
             # update this path
-            file = self.project_path + f"data\\utterances\\" + file
+            file = os.path.join(self.project_path, f"data", "utterances", file)
             mixer.init()
             mixer.music.load(file)
             mixer.music.play()
@@ -198,9 +199,9 @@ class PhoneViz:
         rounding_dict = {0: "Unrounded", 1: "Rounded"}
         # %%
         # load IPA symbols with their relevant IPA chart coordinates
-        vowels = pd.read_csv(self.project_path + 'resources\\vowels_ipa.csv')
-        cons = pd.read_csv(self.project_path + "resources\\consonantmap_ipa.csv")
-        impossible_phones = pd.read_csv(self.project_path + "resources\\impossible_phones.csv")
+        vowels = pd.read_csv(os.path.join(self.project_path, "resources", "vowels_ipa.csv"))
+        cons = pd.read_csv(os.path.join(self.project_path, "resources", "consonantmap_ipa.csv"))
+        impossible_phones = pd.read_csv(os.path.join(self.project_path, "resources", "impossible_phones.csv"))
         impossible_phones = [f"{p['poa']}-{p['moa']}-{p['voicing']}"
                              for _, p in impossible_phones.iterrows()]
 
@@ -306,7 +307,8 @@ class PhoneViz:
 
         # %%
         # set the figure parameters
-        plt.rcParams["font.family"] = "times new roman"
+        if "Windows" in platform.system():
+            plt.rcParams["font.family"] = "times new roman"
         plt.rcParams['axes.unicode_minus'] = False  # These two lines need to be set manually
 
         fig_width = 16
