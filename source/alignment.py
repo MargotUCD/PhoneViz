@@ -13,31 +13,26 @@ class SCLiteAlignment:
         self.__SCLITE_PATH = os.path.join(os.getcwd().replace("source", "resources"), "sctk-2.4.10")
         self.__SCLITE_BIN_PATH = os.path.join(self.__SCLITE_PATH, "bin")
         self.__SCLITE_GEN_PATH = os.path.join(self.__SCLITE_PATH, "gen")
-        self.__TO_SCLITE_WINDOWS_COMMAND = "bash -i"
-        self.__TO_SCLITE_LINUX_COMMAND = ""
         self.__SCLITE_ALIGN_COMMAND = "./sclite -h hypfile trn -r reffile trn -i spu_id -O ./../gen -n \"report\" -o all"
+        
+        self.__REF_PATH = os.path.join(self.__SCLITE_BIN_PATH, f"reffile")
+        self.__HYP_PATH = os.path.join(self.__SCLITE_BIN_PATH, f"hypfile")
 
         if not os.path.isdir(self.__SCLITE_GEN_PATH):
             os.makedirs(self.__SCLITE_GEN_PATH)
 
-        h_r_files_path = os.path.join(self.__SCLITE_PATH, "bin")
-        if not os.path.exists(os.path.join(h_r_files_path, "reffile")):
-            open(os.path.join(h_r_files_path, "reffile", 'x')).close()
+        if not os.path.exists(self.__REF_PATH):
+            open(self.__REF_PATH, 'x').close()
 
-        if not os.path.exists(os.path.join(h_r_files_path, "hypfile")):
-            open(os.path.join(h_r_files_path, "hypfile", 'x')).close()
+        if not os.path.exists(self.__HYP_PATH):
+            open(self.__HYP_PATH, 'x').close()
 
     def copy(self):
         return SCLiteAlignment()
 
     def get_full_report(self, oracle, variant):
-        command = self.__get_full_command(oracle, variant)
-        # try:
-        #     self.__call_cmd(command)
-        # except:
-        #     # does not stop if time out
-        #     pass
-        self.__call_cmd(command)
+        
+        self.__call_cmd(self.__get_full_command(oracle, variant))
 
         eval_report = {"I": {}, "S": {}, "D": {}, "": ["", ""]}
 
@@ -107,7 +102,7 @@ class SCLiteAlignment:
     def __get_full_command(self, oracle, variant):
         to_file_command = "echo \"" + oracle + "\" > reffile ; echo \"" + variant + "\" > hypfile"
         if "Windows" in platform.system():
-            return self.__TO_SCLITE_WINDOWS_COMMAND + " ; " + to_file_command + " ; " + self.__SCLITE_ALIGN_COMMAND
+            return "bash -i ; " + to_file_command + " ; " + self.__SCLITE_ALIGN_COMMAND
         else:
             return to_file_command + " ; " + self.__SCLITE_ALIGN_COMMAND
 

@@ -11,7 +11,6 @@ project_path = (os.path.dirname(os.path.abspath("__file__"))).replace("source", 
 pipeline_obj = ShowTellPipeline()
 
 run = True
-
         
 print("\n------------------------------------------------------------\n------------------- WELCOME TO PHONE VIZ -------------------\n------------------------------------------------------------\n")
     
