@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ### eSpeak
 
-PhoneViz is proposed with Wav2Vec2Phoneme[^2] as phoneme recogniser. eSpeak is required for running Wav2Vec2Phoneme. Follow the instruction below for installation.
+PhoneViz is proposed with Wav2Vec2Phoneme[^2] as phoneme recogniser. eSpeak is required for running Wav2Vec2Phoneme. Follow the instructions below for installation.
 
 **Linux:**
 The module is tested with eSpeak version 1.48.15. Install using the command below or specific instruction for a given distribution:
@@ -35,12 +35,12 @@ The module is tested with eSpeak version 1.48.15. Install using the command belo
 sudo apt-get install espeak=1.48.15
 ```
 
-Make sure it is installed using the command ``` espeak --version```. You may alternately install eSpeak-NG (https://github.com/espeak-ng/espeak-ng).
+Make sure it is installed using the command ```espeak --version```. You may alternately install eSpeak-NG (https://github.com/espeak-ng/espeak-ng).
 
 **Windows:**
 On Windows, it is recommended to install eSpeak-NG from the source (https://github.com/espeak-ng/espeak-ng/releases). It is confirmed to work with version 1.51.
 
-Sometimes Windows can have trouble finding the path to eSpeak dll. The expected path is set to be `C:\Program Files\eSpeak NG\libespeak-ng.dll`, however, if your installation path is different, it needs to be updated when calling the pipeline as shown below:
+Sometimes Windows can have trouble finding the path to eSpeak dll. The expected path is set to be `C:\Program Files\eSpeak NG\libespeak-ng.dll`, however, if your installation path is different, it needs to be updated when calling the PhoneViz demonstration pipeline as shown below:
 
 ```python
     pipeline_obj = ShowTellPipeline("your_path_to_espeak_dll")
@@ -48,7 +48,7 @@ Sometimes Windows can have trouble finding the path to eSpeak dll. The expected 
 
 ### SCTK sclite
 
-The phonetic alignment in PhoneViz is done using sclite from SCTK, the NIST Scoring Toolkit (under licence http://www.nist.gov/open/license.cfm). It does not need to be downloaded as it comes with PhoneViz under the `resources\sctk-2.4.10\` repository.
+The phonetic alignment in PhoneViz is done using sclite from SCTK, the NIST Scoring Toolkit (under licence http://www.nist.gov/open/license.cfm). **It does not need to be downloaded as it comes with PhoneViz under the `resources\sctk-2.4.10\` repository.**
 
 **Linux:**
 On Linux, the user needs to provide execution permissions to the sclite program in `resources\sctk-2.4.10\bin` using the command below.
@@ -58,7 +58,7 @@ chmod +x sclite
 ```
 
 **Windows:**
-To be able to run sclite on Windows, the Windows Subsystem for Linux (WSL) needs to be installed and setup. For documentation on how to install WSL, please the the Microsoft help page https://learn.microsoft.com/en-us/windows/wsl/install. Please note that Docker whould be installed. As for Linux, the user needs to give permissions to sclite using the command below.
+To be able to run sclite on Windows, the Windows Subsystem for Linux (WSL) needs to be installed and setup. For documentation on how to install WSL, please refer to the Microsoft help page https://learn.microsoft.com/en-us/windows/wsl/install. Please note that Docker should be installed prior to WSL. You can check WSL installation by running the ```bash --version``` command in PowerShell or Windows Command Prompt. As for Linux, the user then needs to give permissions to sclite using the command below.
 
 ```bash
 chmod +x sclite
