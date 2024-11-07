@@ -122,7 +122,7 @@ To get the full alignments and display it in PhoneViz:
 ```python
     PhoneViz().phoneviz(pipeline_obj.dataframe_pipeline(test_df))
 ```
-#### 3. Example use for a dataframe without alignments
+#### Example use for a dataframe without alignments
 
 The dataframe should contain the columns 
                     "file_name" : the relative path to the audio file,
