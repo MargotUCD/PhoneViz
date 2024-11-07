@@ -2,7 +2,7 @@
 
 ![Screenshot of PhoneViz with annotations showing where to interact with the tool.](phoneviz_screenshot.png)
 
-PhoneViz (see our [paper](https://www.isca-archive.org/interspeech_2024/masson24_interspeech.pdf)) is a phone alignment visualiser which facilitates a deeper analysis of the phone alignments typically used to compare a reference transcription and a concrete speaker pronunciation. PhoneViz provides an interactive environment where aligned phones are displayed in the IPA chart helping users to explore phonetic variation beyond symbol substitution, insertion and deletion. PhoneViz was demonstrated at Interspeech 2024 (see the slides and poster). This repository contains the code and resources for the phone alignment visualiser: phone recognition, alignment computation and phones visualiser.
+PhoneViz (see our [paper](https://www.isca-archive.org/interspeech_2024/masson24_interspeech.pdf)) is a phone alignment visualiser which facilitates a deeper analysis of the phone alignments typically used to compare a reference transcription and a concrete speaker pronunciation. PhoneViz provides an interactive environment where aligned phones are displayed in the IPA chart helping users to explore phonetic variation beyond symbol substitution, insertion and deletion. PhoneViz was demonstrated at Interspeech 2024 (see the [slides](slides_show_tell_masson_shams_gessinger_berndsen.pdf)). This repository contains the code and resources for the phone alignment visualiser: phone recognition, alignment computation and phones visualiser.
 
 ## Installation
 
