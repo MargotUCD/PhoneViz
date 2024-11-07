@@ -20,37 +20,33 @@ class AutomaticSpeechRecognition:
     """
     Copy
     """
-
     def copy(self):
         return AutomaticSpeechRecognition(self.get_name())
 
     """
     Getters
     """
-
     def get_name(self):
         return self.__name
 
     """
     Setters
     """
-
     def __set_name(self, asr_name):
         self.__name = asr_name
 
     """
     Methods
     """
-
     def recognize_text(self, input_path):
         return ""
 
 
 class Wav2Vec2ASR(AutomaticSpeechRecognition):
-    def __init__(self):
+    def __init__(self, espeak_path = 'C:\Program Files\eSpeak NG\libespeak-ng.dll'):
         super().__init__("wav2vec2")
         if "Windows" in platform.system():
-            EspeakWrapper.set_library('C:\Program Files\eSpeak NG\libespeak-ng.dll')
+            EspeakWrapper.set_library(espeak_path)
 
         logging.set_verbosity_error()
 

@@ -13,10 +13,10 @@ class ShowTellPipeline:
     Show and Tell demo setup pipeline: (audios -> ASR ->) alignments -> PhoneViz.
     """
     
-    def __init__(self):
+    def __init__(self, espeak_path = 'C:\Program Files\eSpeak NG\libespeak-ng.dll'):
         with alive_bar(length = 3, title='Configuration') as bar:
             self.__dataPath = os.path.join(os.getcwd().replace("source", "data"), "utterances")
-            self.__asrObj = Wav2Vec2ASR()
+            self.__asrObj = Wav2Vec2ASR(espeak_path)
             bar()
             self.__alignObj = SCLiteAlignment()
             bar()

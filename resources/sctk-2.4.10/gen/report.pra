@@ -9,9 +9,9 @@ Speakers:
 
 Speaker sentences   0:     #utts: 1
 id: 
-Scores: (#C #S #D #I) 2 1 0 42
-REF:  * ** * * ** ** * * ** * * ** * * ** ** *** * * ** ** * * ** * b ** * L a ** ** ** ** ** * ** * ** ** * * * ** * 
-HYP:  S æ N S ð ɛ N S ʌ M M ɪ S T ɪ ɹ ᵻ S F ɔ ɹ S H ɐ Z b ɪ N F a ɪ ɾ ɪ ŋ ʌ S æ T ɛ ɹ I S T ɛ P 
-Eval: I I  I I I  I  I I I  I I I  I I I  I  I   I I I  I  I I I  I   I  I S   I  I  I  I  I  I I  I I  I  I I I I  I 
+Scores: (#C #S #D #I) 25 10 4 3
+REF:  * ** ɔ θ ə ɹ ə v ð ə D E  ɪ n d ʒ ə ɹ t ɹ e ɪ l f ɪ l ɪ p ** s t I  l Z ɛ T s ɛ t ə ɹ ə 
+HYP:  A ʊ L  θ ɚ ɹ ʌ v ð ə * ð A  n d ** ** ɚ t ɹ e ɪ l f ɪ l ɪ p ɪ s t ɪ l S ɛ K s ɛ t ** ɹ ɐ 
+Eval: I I  S     S     S          D S  S      D  D  S                          I      S    S    S        D     S  
 
 
