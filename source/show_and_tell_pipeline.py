@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from automatic_speech_recognition import Wav2Vec2ASR
+from phonetic_transcription import Wav2Vec2Phoneme
 from text import Text
 from alignment import SCLiteAlignment
 from alive_progress import alive_bar
 import pandas as pd
 import os
-# from os import path as ospath
 
 class ShowTellPipeline:
     """
-    Show and Tell demo setup pipeline: (audios -> ASR ->) alignments -> PhoneViz.
+    Show and Tell demo setup pipeline: (audios -> Phone Recognition ->) alignments -> PhoneViz.
     """
     
     def __init__(self, espeak_path = 'C:\Program Files\eSpeak NG\libespeak-ng.dll'):
         with alive_bar(length = 3, title='Configuration') as bar:
             self.__dataPath = os.path.join(os.getcwd().replace("source", "data"), "utterances")
-            self.__asrObj = Wav2Vec2ASR(espeak_path)
+            self.__recoObj = Wav2Vec2Phoneme(espeak_path)
             bar()
             self.__alignObj = SCLiteAlignment()
             bar()
@@ -24,7 +23,7 @@ class ShowTellPipeline:
     
     def single_pipeline (self, file_path:str, text_ref:str):
         """
-        Show and Tell pipeline on one audio: audio -> ASR -> alignments. Returns the alignments as columns in the dataframe.
+        Show and Tell pipeline on one audio: audio -> Phone Recognition -> alignments. Returns the alignments as columns in the dataframe.
 
         Parameters
         ----------
@@ -44,8 +43,8 @@ class ShowTellPipeline:
             pho_ref = Text(text_ref).to_ipa()
             pho_ref_str = " ".join(pho_ref)
             bar()
-            # Step 2: run ASR and get hypothesis text and phonemes
-            text_hyp, pho_hyp = self.__asrObj.recognize_text(os.path.join(self.__dataPath, file_path))
+            # Step 2: run Phone Recognition and get hypothesis text and phonemes
+            pho_hyp = self.__recoObj.recognize_phones(os.path.join(self.__dataPath, file_path))
             pho_hyp_str = " ".join(pho_hyp)
             bar()
             # Step 3: compute alignment and get aligned reference phonemes and aligned hypothesis phonemes
@@ -61,7 +60,7 @@ class ShowTellPipeline:
     
     def dataframe_pipeline (self, dataframe:pd.DataFrame):
         """
-        Show and Tell pipeline on a dataframe: each audio in dataframe -> ASR -> alignments. Returns the alignments as columns in the dataframe.
+        Show and Tell pipeline on a dataframe: each audio in dataframe -> Phone Recognition -> alignments. Returns the alignments as columns in the dataframe.
         WARNING : THE DATAFRAME SHOULD HAVE COLUMNS "file_name" AND "reference_text".
         Parameters
         ----------

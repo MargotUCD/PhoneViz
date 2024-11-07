@@ -13,7 +13,7 @@ from phonemizer.backend.espeak.wrapper import EspeakWrapper
 import platform
 
 
-class AutomaticSpeechRecognition:
+class PhoneticTranscription:
     def __init__(self, name=""):
         self.__name = name
 
@@ -21,7 +21,7 @@ class AutomaticSpeechRecognition:
     Copy
     """
     def copy(self):
-        return AutomaticSpeechRecognition(self.get_name())
+        return PhoneticTranscription(self.get_name())
 
     """
     Getters
@@ -42,7 +42,7 @@ class AutomaticSpeechRecognition:
         return ""
 
 
-class Wav2Vec2ASR(AutomaticSpeechRecognition):
+class Wav2Vec2Phoneme(PhoneticTranscription):
     def __init__(self, espeak_path = 'C:\Program Files\eSpeak NG\libespeak-ng.dll'):
         super().__init__("wav2vec2")
         if "Windows" in platform.system():
@@ -54,23 +54,20 @@ class Wav2Vec2ASR(AutomaticSpeechRecognition):
         self.__phoneme_tokenizer = Wav2Vec2PhonemeCTCTokenizer.from_pretrained("facebook/wav2vec2-lv-60-espeak-cv-ft")
         self.__phoneme_processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-lv-60-espeak-cv-ft")
 
-        self.__text_model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-base-960h")
-        self.__text_processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-base-960h")
-
     """
     Copy
     """
 
     def copy(self):
-        return Wav2Vec2ASR()
+        return Wav2Vec2Phoneme()
 
     """
     Methods
     """
 
-    def recognize_text(self, input_path):
+    def recognize_phones(self, input_path):
 
-        text_transcription, phoneme_transcription = "", ""
+        phoneme_transcription = ""
 
         with open(input_path, 'rb') as audio_file:
             try:
@@ -86,15 +83,8 @@ class Wav2Vec2ASR(AutomaticSpeechRecognition):
             try:
                 audio, rate = soundfile.read(audio_file)
 
-                text_input_values = self.__text_processor(audio, return_tensors="pt", sampling_rate=16000).input_values
                 phoneme_input_values = self.__phoneme_processor(audio, return_tensors="pt",
                                                                 sampling_rate=16000).input_values
-
-                # Perform inference for text transcription
-                with torch.no_grad():
-                    text_logits = self.__text_model(text_input_values).logits
-                    text_prediction = torch.argmax(text_logits, dim=-1)
-                    text_transcription = self.__text_processor.batch_decode(text_prediction)[0]
 
                 # Perform inference for phoneme recognition
                 with torch.no_grad():
@@ -106,7 +96,7 @@ class Wav2Vec2ASR(AutomaticSpeechRecognition):
             except Exception:
                 traceback.print_exc()
 
-        return (text_transcription, phoneme_transcription)
+        return phoneme_transcription
 
     def __clean_ipa(self, phoneme_transcription):
         phonemes = phoneme_transcription[0].split()
